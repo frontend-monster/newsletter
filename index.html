@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <title>Newsletter sign-up form</title>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+  <main class="container flex main-div">
+
+    <div class="left darkslate-grey" data-aos="fade-down-right" data-aos-duration="1500">
+      <h1 class="heading">Stay updated!</h1>
+      <p class="body">Join 60,000+ product managers receiving monthly updates on:</p>
+
+      <ul>
+        <li>
+          <span>
+            <img src="/assets/images/icon-list.svg" alt="">
+          </span>
+          Product discovery and building what matters
+        </li>
+        <li>
+          <span>
+            <img src="/assets/images/icon-list.svg" alt="">
+          </span>
+          Measuring to ensure updates are a success
+        </li>
+        <li>
+          <span>
+            <img src="/assets/images/icon-list.svg" alt="">
+          </span>
+          And much more!
+        </li>
+      </ul>
+
+      <form class="last-form">
+        <div class="flex input-label">
+          <label class="body-small" for="email">Email address</label>
+          <p class="input-label-second">Valid email required</p>
+        </div>
+        <input type="email" name="email" id="email" placeholder="email@company.com" required />
+        <button class="body ff-700 white" type="submit">Subscribe to monthly newsletter</button>
+      </form>
+    </div>
+    <div class="right" data-aos="fade-up-left" data-aos-duration="1500">
+
+      <img src="/assets/images/illustration-sign-up-mobile.svg" alt="" class="mobile-img">
+      <img src="/assets/images/illustration-sign-up-desktop.svg" alt="Image" class="desktop-img">
+    </div>
+  </main>
+
+  <section class="second-div">
+    <div class="top">
+      <img src="./assets/images/icon-success.svg
+      " alt="">
+      <h1 class="heading">Thanks for subscribing!</h1>
+      <p class="body">A confirmation email has been sent to <span>ash@loremcompany.com</span>. Please open it and click
+        the button inside to confirm your
+        subscription.</p>
+    </div>
+
+    <div class="button">
+      <button class="body ff-700 white" id="dismiss" type="button">Dismiss message</button>
+    </div>
+  </section>
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    document.querySelector('#email').addEventListener('input', function () {
+      const emailDiv = this.previousElementSibling;
+      if (!this.validity.valid) {
+        emailDiv.classList.add('error');
+      } else {
+        emailDiv.classList.remove('error');
+      }
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      email.previousElementSibling.classList.remove('error');
+      const mainDiv = document.querySelector('.main-div');
+      const secondDiv = document.querySelector('.second-div');
+      mainDiv.classList.remove('fadeIn2');
+      mainDiv.classList.add('fade-out');
+      mainDiv.style.display = 'none';
+      secondDiv.style.display = 'flex';
+      secondDiv.classList.add('fadeIn');
+    });
+
+    const dismiss = document.querySelector('#dismiss');
+    dismiss.addEventListener('click', function () {
+      const secondDiv = document.querySelector('.second-div');
+      const mainDiv = document.querySelector('.main-div');
+      secondDiv.classList.remove('fadeIn');
+      secondDiv.classList.add('fade-out');
+      secondDiv.style.display = 'none';
+      mainDiv.style.display = 'flex';
+      mainDiv.classList.remove('fade-out');
+      mainDiv.classList.add('fadeIn2');
+      form.reset();
+    });
+  </script>
+</body>
+
+</html>
